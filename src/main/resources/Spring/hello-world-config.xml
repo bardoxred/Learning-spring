@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="helloWorldFactory" class="dependence.demo.services.HelloWorldFactory"/>
+    <bean id="german" factory-bean="helloWorldFactory" factory-method="helloWorldServices">
+        <constructor-arg value="de"/>
+    </bean>
+    <bean id="russian" factory-bean="helloWorldFactory" factory-method="helloWorldServices">
+        <constructor-arg value="ru"/>
+    </bean>
+    <beans profile="polish">
+        <import resource="polish-hello-world.xml"/>
+    </beans>
+    <beans profile="english">
+        <import resource="english-hello-world.xml"/>
+    </beans>
+
+</beans>

@@ -1,7 +1,5 @@
 package dependence.demo.controllers;
 
-import dependence.demo.services.HelloWorldServiceEnglish;
-import dependence.demo.services.HelloWorldServicePolish;
 import dependence.demo.services.HelloWorldServices;
 
     public class GreetingController {
@@ -9,6 +7,7 @@ import dependence.demo.services.HelloWorldServices;
         private HelloWorldServices helloWorldServicesPolish;
         private HelloWorldServices helloWorldServicesEnglish;
         private HelloWorldServices helloWorldServicesGerman;
+        private HelloWorldServices helloWorldServicesRussian;
 
         public GreetingController(HelloWorldServices helloWorldServices) {
         this.helloWorldServices = helloWorldServices;
@@ -22,6 +21,9 @@ import dependence.demo.services.HelloWorldServices;
         public void setHelloWorldServiceGerman(HelloWorldServices helloWorldServiceGerman) {
             this.helloWorldServicesGerman = helloWorldServiceGerman;
         }
+        public void setHelloWorldServiceRussian(HelloWorldServices helloWorldServiceRussian) {
+            this.helloWorldServicesRussian = helloWorldServiceRussian;
+        }
 
         public String sayHello(){
             String greeting = helloWorldServices.getGreeting();
@@ -29,6 +31,7 @@ import dependence.demo.services.HelloWorldServices;
             System.out.println(helloWorldServicesPolish.getGreeting());
             System.out.println(helloWorldServicesEnglish.getGreeting());
             System.out.println(helloWorldServicesGerman.getGreeting());
+            System.out.println(helloWorldServicesRussian.getGreeting());
             return greeting;
         }
 

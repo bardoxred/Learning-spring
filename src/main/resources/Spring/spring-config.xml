@@ -3,24 +3,14 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-
     <context:component-scan base-package="dependence.demo"/>
+
+    <import resource="hello-world-config.xml"/>
     <bean id="greetingController" class="dependence.demo.controllers.GreetingController">
-        <property name="helloWorldServicePolish" ref="polish"/>
-        <property name="helloWorldServiceEnglish" ref="english"/>
+        <property name="helloWorldServicePolish" ref="default"/>
+        <property name="helloWorldServiceEnglish" ref="default"/>
         <property name="helloWorldServiceGerman" ref="german"/>
+        <property name="helloWorldServiceRussian" ref="russian"/>
     </bean>
-    <bean id="helloWorldFactory" class="dependence.demo.services.HelloWorldFactory"/>
-    <bean id="german" factory-bean="helloWorldFactory" factory-method="helloWorldServices">
-        <constructor-arg value="de"/>
-    </bean>
-    <bean id="english" factory-bean="helloWorldFactory" factory-method="helloWorldServices">
-        <constructor-arg value="en"/>
-    </bean>
-    <bean id="polish" factory-bean="helloWorldFactory" factory-method="helloWorldServices" primary="true">
-        <constructor-arg value="pl"/>
-    </bean>
-    <bean id="russian" factory-bean="helloWorldFactory" factory-method="helloWorldServices">
-        <constructor-arg value="ru"/>
-    </bean>
+
 </beans>
